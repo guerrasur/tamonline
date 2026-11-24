@@ -1,0 +1,7 @@
+config.json
+estado.json
+logs/
+venv/
+__pycache__/
+*.pyc
+.update_tmp/

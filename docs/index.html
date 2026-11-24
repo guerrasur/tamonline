@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tamo online?</title>
+  <link rel="icon" href="icono.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="top">
+    <h1>Tamo online?</h1>
+    <div class="version" id="version">v…</div>
+  </header>
+
+  <div id="aviso-local" class="banner banner-error" hidden>
+    <strong>Programa local no iniciado.</strong>
+    Abrí “Tamo online” desde el acceso directo del Escritorio (o ejecutá iniciar_app.bat) y esta página se conecta sola.
+  </div>
+  <div id="aviso-demo" class="banner banner-info" hidden>
+    Modo demo: datos simulados. <button class="btn chico" data-demo="offline_horario">Probar aviso: offline en horario</button>
+    <button class="btn chico" data-demo="online_fuera">Probar aviso: online fuera de horario</button>
+    <button class="btn chico" data-demo="error">Probar aviso: sin datos</button>
+  </div>
+  <div id="aviso-notif" class="banner banner-info" hidden>
+    <span id="aviso-notif-texto">Activá las notificaciones para enterarte cuando cambie el estado de tus tiendas.</span>
+    <button class="btn chico" id="btn-notif">Activar notificaciones</button>
+  </div>
+
+  <nav id="pestanas" class="pestanas" hidden></nav>
+
+  <main id="tarjetas" class="tarjetas"></main>
+
+  <section class="acciones">
+    <button class="btn" id="btn-actualizar">Actualizar ahora</button>
+    <button class="btn" id="btn-ajustes">Ajustes</button>
+    <span id="info-act" class="chica"></span>
+  </section>
+
+  <section class="historial">
+    <h2>Historial de cambios</h2>
+    <ul id="lista-historial"><li class="vacio">Sin cambios registrados todavía.</li></ul>
+  </section>
+
+  <div id="toasts" class="toasts"></div>
+
+  <dialog id="dlg-ajustes">
+    <form method="dialog" id="form-ajustes" onsubmit="return false">
+      <h2 id="titulo-ajustes">Ajustes</h2>
+      <p class="chica" id="intro-ajustes"></p>
+      <div id="ajustes-locales"></div>
+      <button type="button" class="btn chico" id="btn-add-local">+ Agregar otro local</button>
+      <fieldset>
+        <legend>General</legend>
+        <label>Verificar cada (segundos)
+          <input type="number" id="cfg-intervalo" min="30" max="3600" step="10" value="120"></label>
+        <label>Avisar “sin datos” después de (verificaciones seguidas)
+          <input type="number" id="cfg-errores" min="1" max="50" value="3"></label>
+        <label class="check"><input type="checkbox" id="cfg-sonido"> Sonido corto en las notificaciones</label>
+        <label>Al abrir el programa, abrir la web
+          <select id="cfg-abrir"><option value="local">local (http://localhost:8765)</option>
+            <option value="pages">de GitHub Pages</option></select></label>
+        <button type="button" class="btn chico" id="btn-probar-notif">Probar notificación</button>
+      </fieldset>
+      <p id="error-ajustes" class="error-txt" hidden></p>
+      <div class="fila-botones">
+        <button type="button" class="btn" id="btn-cancelar">Cancelar</button>
+        <button type="button" class="btn primario" id="btn-guardar">Guardar</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>
